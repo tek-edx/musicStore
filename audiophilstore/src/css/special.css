@@ -1,0 +1,40 @@
+.special-item-grid {
+
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-gap: 1px 1px;
+    
+}
+
+
+
+.special-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+    min-height: 350px;
+    max-height: 350px;
+    margin: auto;
+    border: solid gray 1px;
+    
+    
+    
+
+}
+
+
+
+.special-card > img{
+    width: 100%;
+    max-height: 15rem;
+    margin-bottom: auto;
+    object-fit: cover;
+   
+}
+
+.special-card  * {
+    
+    margin: 0.2px;
+}

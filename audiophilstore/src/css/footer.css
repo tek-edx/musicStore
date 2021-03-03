@@ -1,0 +1,19 @@
+.footer-top-section{
+    height: 20rem;
+    width: 100%;
+    display: flex;
+    
+    justify-content: space-between;
+    background-color: rgba(0,0,0,0.9);
+    margin: 1rem auto;
+    position: relative;
+    bottom: 0px;
+    color: white
+}
+
+.footer-bottom-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
