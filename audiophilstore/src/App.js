@@ -1,9 +1,15 @@
 import React from 'react'
 import HeaderBadge from './components/HeaderBadge';
-import specialData from './testdata/special';
+
 import Product from'./components/Product';
 import HighlightItem from './components/HighlightItem';
+
+import FAQ from './components/FAQ';
 import Footer from './components/Footer';
+
+
+import specialData from './testdata/special';
+import faqs from './testdata/faq'
 import './css/special.css'
 
 function App() {
@@ -24,7 +30,14 @@ function App() {
       })
     }
     </div>
-   
+
+    <h3>FAQ</h3>
+   {
+     faqs.map((faq) =>{
+       return <FAQ key={ faq.id} {...faq} />
+     })
+    
+}
    <Footer />
     </>
     

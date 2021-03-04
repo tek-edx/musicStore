@@ -43,6 +43,24 @@ const specialProducts = [
         review: '5star',
         price: 200
     },
+    {
+        id: 6,
+        image: 'https://cdn.shopify.com/s/files/1/0276/5304/6345/products/20200808_123859_360x.jpg?v=1598964984',
+
+        name: 'headphone',
+        review: '5star',
+        price: 200
+    },
+    {
+        id: 7,
+        image: 'https://cdn.shopify.com/s/files/1/0276/5304/6345/products/20200808_123859_360x.jpg?v=1598964984',
+
+        name: 'headphone',
+        review: '5star',
+        price: 200
+    },
+
+
 
 ]
 

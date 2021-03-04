@@ -6,17 +6,31 @@ import '../css/highlight.css';
 
 function HighlightItem({items}) {
     const [index,setIndex] = useState(0);
-    // const [highlightItem,setHighlightItem] = useState(items[index])
+    const [highlightItem,setHighlightItem] = useState(items[index])
 
     // const randomIndex = () => {
-    //     setInterval(() => {
+    //    let slider =  setInterval(() => {
 
     //         let newIndex = Math.floor(
     //             Math.random() * items.length )
     //             console.log(newIndex);
-    //         setIndex(newIndex);
 
-    //     }, 5000)
+    //             if(newIndex === index && newIndex < items.lenght - 1){
+    //                 newIndex++;
+
+    //             }else{
+    //                 setIndex(0);
+    //             }
+    //            setIndex((index) => {
+    //                return newIndex;
+    //            });
+
+
+    //          clearInterval(slider);
+
+    //     }, 10000);
+
+        
     // }
 
     const {image} = items[index]
