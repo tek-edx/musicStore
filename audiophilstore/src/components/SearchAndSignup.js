@@ -2,12 +2,14 @@
 
 import React from 'react'
 import '../css/search&signup.css'
+import styled from 'styled-components';
 
 import Cart from './Cart';
 
 
 function SearchAndSignup() {
     return (
+        <SearchSignup>
         <div className = 'wrapper'>
             
             <input type="text" placeholder="Product Search" className="search-bar" style={{height: '3rem', marginLeft: '1.2rem'}} />
@@ -17,7 +19,46 @@ function SearchAndSignup() {
              
 
         </div>
+        </SearchSignup>
     )
 }
+
+const SearchSignup = styled.div`
+
+position: sticky;
+top: 5rem;
+
+.wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: whitesmoke;
+    
+}
+
+.wrapper * {
+    margin-right: 0.5rem;
+}
+
+.search-bar {
+    width: 60%;
+    
+}
+
+.log-in {
+    margin-left: auto;
+    
+}
+
+input{
+    background-color: whitesmoke;
+    font-size: 1.5rem;
+    margin: 0.5rem auto;
+}
+
+
+
+`
 
 export default SearchAndSignup

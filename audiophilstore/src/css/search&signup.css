@@ -1,27 +1,6 @@
 
 
 
-.wrapper{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    background-color: whitesmoke;
-}
-
-.wrapper * {
-    margin-right: 0.5rem;
-}
-
-.search-bar {
-    width: 60%;
-    
-}
-
-.log-in {
-    margin-left: auto;
-    
-}
 
 
 

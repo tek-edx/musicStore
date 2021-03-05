@@ -1,6 +1,7 @@
 import React ,{useState} from 'react';
 import { BsFillCaretRightFill } from "react-icons/bs";
 import { BsFillCaretLeftFill } from "react-icons/bs";
+import styled from 'styled-components';
 import '../css/highlight.css';
 
 
@@ -40,12 +41,22 @@ function HighlightItem({items}) {
 
     // randomIndex();
     return (
+        <HighlightItems>
+        <div>
         <div className="highlight-item">
             <div><BsFillCaretLeftFill  className='arrow-left'/></div>
             <img src={image} />
             <div><BsFillCaretRightFill className='arrow-right'/></div>
         </div>
+        </div>
+        </HighlightItems>
     )
 }
+
+const HighlightItems = styled.div`
+ 
+
+
+`
 
 export default HighlightItem;

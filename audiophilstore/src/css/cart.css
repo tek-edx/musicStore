@@ -1,0 +1,6 @@
+.cart-icon::after {
+    content: ' ';
+    display: block;
+    background-color: tomato;
+    
+}

@@ -1,11 +1,16 @@
 import React from 'react'
 
-export default function Navigation() {
+function Navigation() {
     return (
-        <div>
-    
-
+        <>
+        <div className="navbar">
             
         </div>
+
+
+        </>
     )
 }
+
+export default Navigation
+
