@@ -17,7 +17,7 @@ function Review({review,leftClick,rightClick}) {
 
             <div className="btn-container">
                 <button className="btn-left" 
-               onClick={() => {leftClick()}}>Left</button>
+               onClick={() =>leftClick()}>Left</button>
 
                 <button className="btn-right" onClick={() => {rightClick()}}>Right</button>
             </div>
@@ -32,7 +32,7 @@ const ReviewStyle = styled.div`
 
 
 width: 60vw;
-height: 80vh;
+height: 60vh;
 margin: auto;
 border: solid green 1px;
 text-align: center;
@@ -40,8 +40,8 @@ margin: 5rem auto;
 background-color: lime;
 
 .image{
-max-width: 320px;
-height: 320px;
+width: 150px;
+height: 150px;
  border-radius : 50%;
  background-color: slateblue;
 margin: auto;
@@ -49,6 +49,7 @@ margin: auto;
 img{
     width: 98%;
     border-radius : 50%;
+    
 }
 
 `
