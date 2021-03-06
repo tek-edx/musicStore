@@ -1,31 +1,51 @@
-import React, { useState } from 'react';
-import faqs from '../testdata/faq'
+import React, { useState } from "react";
+import styled from "styled-components";
 
-function FAQ( {question, answer}) {
+function FAQ({ question, answer }) {
+  const [showAnswer, setShowAnser] = useState(false);
 
-    const [showAnswer,setShowAnser] = useState(false);
-  
-    return (
-        <>
-       
-         <ul className="container">
-           
-          
-                       <li  >
-                           <h5>{question}</h5>
-                           <button  onClick={() => {setShowAnser(!showAnswer)}}>btn</button>
-                           <p>{showAnswer ? answer : " "}</p>
-                       </li>
-                   
-              
-
-         
-         </ul>
-
-            
-        </>
-    )
-    
+  return (
+    <FaqStyle>
+      <div>
+        <li>
+          <h5>{question}</h5>
+          <button
+            onClick={() => {
+              setShowAnser(!showAnswer);
+            }}
+          >
+            btn
+          </button>
+        </li>
+        <p>{showAnswer ? answer : " "}</p>
+      </div>
+    </FaqStyle>
+  );
 }
 
-export default FAQ
+const FaqStyle = styled.div`
+  border: solid black 1px;
+  border-radius: 10px;
+  width: 700px;
+
+  margin: 0.5rem;
+  min-height: 3rem;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  h5 {
+    margin-left: 0.5rem;
+  }
+  button {
+    height: 100%;
+    width: 10%;
+    margin-left: auto;
+    margin-right: 2rem;
+  }
+`;
+
+export default FAQ;
