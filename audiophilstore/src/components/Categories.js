@@ -29,18 +29,24 @@ function Categories({itemCategories,filterItem}) {
 
 
 const WrapCatagory = styled.div`
+
+
 display: flex;
-align-items: center;
+flex-direction: row;
+width: 98%;
+
 background-color: whitesmoke;
-height: 5rem;
-margin-left: 1rem;
+
+
+margin: 0px auto;
+margin-bottom : 2rem;
 position: sticky;
-top: 9rem;
+top: 7.9rem;
 
 
 
 a{
-display: inline-item
+  display:block;
 font-size: 1.5rem;
 margin: 0.5rem;
 cursor: pointer;

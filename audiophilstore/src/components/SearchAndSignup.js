@@ -25,8 +25,10 @@ function SearchAndSignup() {
 
 const SearchSignup = styled.div`
 
+width: 98%;
 position: sticky;
-top: 5rem;
+top: 4rem;
+margin: auto;
 
 .wrapper{
     display: flex;

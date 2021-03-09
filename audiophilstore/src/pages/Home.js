@@ -7,8 +7,10 @@ import Product from "../components/Product";
 import HighlightItem from "../components/HighlightItem";
 import SearchAndSignup from "../components/SearchAndSignup";
 import Categories from "../components/Categories";
+import SideBar from '../components/SideBar' ;
 
 import Review from "../components/Review";
+import Subscription from '../components/Subscription';
 
 
 import Footer from "../components/Footer";
@@ -45,7 +47,16 @@ function Home() {
 
     useEffect(() => {
         setReview(reviews[index]);
-    });
+    },[index]);
+
+    useEffect(() => {
+        let slider = setInterval (() => {
+           let newIndex = checkIndex(index + 1);
+           setIndex(newIndex);
+         setReview(reviews[index])
+        },3000);
+        return () => clearInterval(slider);
+    },[index]);
 
     const reviewLeftButton = () => {
         setIndex((index) => {
@@ -84,9 +95,17 @@ function Home() {
             <HighlightItem items={specialData} />
             <SearchAndSignup />
 
-            <Categories itemCategories={itemCategory} filterItem={filterItem} />
-
+           
             <div className="special-item-grid">
+
+                <SideBar>
+                    
+                    <Categories itemCategories={itemCategory} filterItem={filterItem} />
+                    
+
+                    
+                </SideBar >
+
                 {catagory.map((specialItem) => {
                     const { id } = specialItem;
                     return <Product key={id} items={specialItem} />;
@@ -99,7 +118,7 @@ function Home() {
                 leftClick={reviewLeftButton}
             />
 
-
+            <Subscription />
             <Footer />
         </div>
     )
