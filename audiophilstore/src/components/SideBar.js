@@ -1,14 +1,28 @@
-import React ,{useState} from 'react';
+import React ,{useState,useEffect} from 'react';
 import styled from 'styled-components';
 
-import { FaAngleDoubleDown, FaChevronDown } from "react-icons/fa";
+import { FaAngleDoubleDown, FaAngleDoubleUp} from "react-icons/fa";
 
 
 
 
 function SideBar({children}) {
 
-    const [catagoryStatus,setCatagoryStatus] = useState(false);
+    const [catagoryStatus,setCatagoryStatus] = useState(true);
+    const [iconClass,setIconClass] = useState("");
+
+
+    useEffect(() => {
+        if (catagoryStatus) {
+            setIconClass('cat-icon-up');
+        }else{
+        setIconClass('cat-icon-down');
+        }
+        
+        
+    }, [catagoryStatus])
+
+    
 
     
     return (
@@ -20,13 +34,16 @@ function SideBar({children}) {
                 <div className="catagory">
                     <div className="heading-icon">
                    <h3>Catagories </h3>
-                    < FaAngleDoubleDown onClick={()=>{
-                        setCatagoryStatus(!catagoryStatus)
-                    }} />
+                    < FaAngleDoubleDown  className = {iconClass} onClick={()=>{
+                        setCatagoryStatus(!catagoryStatus);
+                        
+                       }} />
                     </div>
                     <div className="children">
 
                         {catagoryStatus ? children : ""}
+                        
+                        
                     
                     
                     </div>
@@ -76,7 +93,8 @@ function SideBar({children}) {
 const SidebarStyle = styled.div`
 grid-row: span 4;
 position: sticky;
-top: 15rem;
+top: 10rem;
+z-index: 0;
 
 margin-bottom: auto;
 
@@ -112,9 +130,35 @@ div.heading-icon {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
 }
 
+.cat-icon-up {
+    transform: rotate(180deg);
+    transition: transform 0.2s linear;
+}
 
+.cat-icon-down {
+    transform: rotate(0deg);
+    transition: transform 0.2s linear;
+}
+
+.children {
+   
+     animation: height 5s ease-in;
+    // min-height: 0px;
+    // max-height: auto;
+   
+    // overflow: hidden;
+    //  transition: height 2s ease-in;
+}
+
+@keyframe height{
+
+    0% { border: solid red 1px;}
+    100% { border: solid green 1px;}
+
+}
 
 `
 

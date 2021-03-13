@@ -18,7 +18,7 @@ function Review({review,leftClick,rightClick}) {
                 <h4>What our costomer says!</h4>
                 <div key={id}>
                     <div className="image">
-                        <img src={image} alt={name} />
+                        <img src={image} alt={name}  />
                     </div>
                     <h4>{job}</h4>
                     <p>{text}</p>
@@ -60,9 +60,15 @@ height: 150px;
  background-color: slateblue;
 margin: auto;
 }
+
 img{
     width: 98%;
+    height: 98%;
+    
     border-radius : 50%;
+    object-fit: cover;
+    object-position: ;
+    
     
 }
 .review-flex {

@@ -23,7 +23,7 @@ text-align: center;
 min-height: 5rem;
 position: sticky;
 top: 0px;
-
+z-index: 1;
 h4{
     color: white;
     padding: 2.5rem;

@@ -29,6 +29,7 @@ width: 98%;
 position: sticky;
 top: 4rem;
 margin: auto;
+z-index: 2;
 
 .wrapper{
     display: flex;

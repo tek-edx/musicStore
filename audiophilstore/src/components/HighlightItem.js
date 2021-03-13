@@ -2,7 +2,7 @@ import React ,{useState} from 'react';
 import { BsFillCaretRightFill } from "react-icons/bs";
 import { BsFillCaretLeftFill } from "react-icons/bs";
 import styled from 'styled-components';
-import '../css/highlight.css';
+
 
 
 function HighlightItem({items}) {
@@ -43,9 +43,9 @@ function HighlightItem({items}) {
     return (
         <HighlightItems>
         <div>
-        <div className="highlight-item">
+        <div className="highlight-items">
             <div><BsFillCaretLeftFill  className='arrow-left'/></div>
-            <img src={image} />
+            <img src={image} className="highlight-image"/>
             <div><BsFillCaretRightFill className='arrow-right'/></div>
         </div>
         </div>
@@ -55,8 +55,32 @@ function HighlightItem({items}) {
 
 const HighlightItems = styled.div`
  
+.highlight-items{
+     display: flex;
+     place-items: center;
+     place-content: center;
+ }
 
+.highlight-image{
+    width: 98%;
+    height: 500px;
+    object-fit: contain;
+    object-position: 50%;
+}
 
+.arrow-right,.arrow-left {
+    color: rgba(0,0,0,0.5);
+}
+.arrow-right {
+    height: 50px;
+    width: 50px;
+
+}
+.arrow-left {
+    height: 50px;
+    width: 50px;
+
+}
 `
 
 export default HighlightItem;

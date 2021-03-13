@@ -7,7 +7,9 @@ import Product from "../components/Product";
 import HighlightItem from "../components/HighlightItem";
 import SearchAndSignup from "../components/SearchAndSignup";
 import Categories from "../components/Categories";
+import Navigation from "../components/Navigation";
 import SideBar from '../components/SideBar' ;
+
 
 import Review from "../components/Review";
 import Subscription from '../components/Subscription';
@@ -94,6 +96,8 @@ function Home() {
 
             <HighlightItem items={specialData} />
             <SearchAndSignup />
+
+            <Navigation />
 
            
             <div className="special-item-grid">
