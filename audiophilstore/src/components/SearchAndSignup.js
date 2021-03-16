@@ -4,7 +4,7 @@ import React from 'react'
 import '../css/search&signup.css'
 import styled from 'styled-components';
 
-import Cart from './Cart';
+import Cart from './CartIcon';
 
 
 function SearchAndSignup() {

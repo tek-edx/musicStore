@@ -16,6 +16,9 @@ function App() {
      <Route exact path="/">
         <HomePage />
      </Route>
+     <Route exact path="/cart">
+       <CartPage />
+     </Route>
      
       <Route exact path='/about'>
         <AboutPage />

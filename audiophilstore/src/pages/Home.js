@@ -20,6 +20,7 @@ import Footer from "../components/Footer";
 import specialData from "../testdata/special";
 
 import reviews from "../testdata/review";
+import styled from 'styled-components';
 
 import "../css/special.css";
 
@@ -28,6 +29,10 @@ let itemCategory = [
     "All",
     ...new Set(specialData.map((item) => item.catagory)),
 ];
+
+
+
+
 
 function Home() {
 
@@ -124,8 +129,33 @@ function Home() {
 
             <Subscription />
             <Footer />
+
+            <ProductPageStyle>
+
+            <div >
+
+
+            </div>
+            </ProductPageStyle>
         </div>
     )
 }
 
+const ProductPageStyle = styled.div`
+
+   position: absolute;
+    top: 120%;
+    left: 1%;
+    height: 98vh;
+    width: 98vw;
+    margin: auto;
+   display: flex;
+   z-index: 5;
+   align-items: center;
+  
+    background-color: green;
+    visibility: hidden;
+}
+
+`;
 export default Home
