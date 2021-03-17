@@ -146,11 +146,11 @@ div.heading-icon {
 .children {
    
      animation: height 5s ease-in;
-    // min-height: 0px;
-    // max-height: auto;
+    min-height: 0px;
+    max-height: auto;
    
-    // overflow: hidden;
-    //  transition: height 2s ease-in;
+    overflow: hidden;
+     transition: height 2s ease-in;
 }
 
 @keyframe height{

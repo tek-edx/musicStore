@@ -1,11 +1,27 @@
 import React from 'react'
 import { BsTextRight } from 'react-icons/bs';
 import styled from 'styled-components';
+import { useGlobalContext } from '../context';
+import specialData from "../testdata/special";
 
-function Categories({itemCategories,filterItem}) {
 
 
-    console.log(itemCategories);
+
+
+
+let itemCategories = [
+    "All",
+    ...new Set(specialData.map((item) => item.catagory)),
+];
+
+
+
+function Categories() {
+
+
+    const {filterItem} = useGlobalContext();
+
+    
     return (
         <WrapCatagory>
         <div>

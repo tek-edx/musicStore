@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaChevronCircleLeft, FaChevronCircleRight} from "react-icons/fa";
+import { useGlobalContext } from '../context';
 
-function Review({review,leftClick,rightClick}) {
-    console.log(review);
+function Review() {
+
+    const { review, reviewRightButton,reviewLeftButton} = useGlobalContext();
+    
 
     const {id,name,job,image,text} = review;
     return (
@@ -13,7 +16,7 @@ function Review({review,leftClick,rightClick}) {
             <div className="review-flex">
 
                 <button 
-                    onClick={() => leftClick()}><FaChevronCircleLeft className="btn-left" /></button>
+                    onClick={() => reviewLeftButton()}><FaChevronCircleLeft className="btn-left" /></button>
                 <div className="info">
                 <h4>What our costomer says!</h4>
                 <div key={id}>
@@ -26,7 +29,7 @@ function Review({review,leftClick,rightClick}) {
                     </div>
                     </div>
 
-                <button onClick={() => { rightClick() }}><FaChevronCircleRight className="btn-right"  /></button>
+                <button onClick={() => { reviewRightButton() }}><FaChevronCircleRight className="btn-right"  /></button>
             </div>
 
         

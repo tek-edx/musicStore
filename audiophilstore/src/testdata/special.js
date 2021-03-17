@@ -99,10 +99,10 @@ const specialProducts = [{
     },
     {
         id: 6,
-        catagory: 'speaker',
+        catagory: 'Extension',
         image: 'https://cdn.shopify.com/s/files/1/0276/5304/6345/products/20200808_123859_360x.jpg?v=1598964984',
 
-        name: 'headphone',
+        name: 'power cable',
         review: 4,
         price: 200,
         salePrice: 180,
@@ -116,7 +116,7 @@ const specialProducts = [{
     },
     {
         id: 7,
-        catagory: 'internet',
+        catagory: 'Extension',
         image: 'https://cdn.shopify.com/s/files/1/0276/5304/6345/products/20200808_123859_360x.jpg?v=1598964984',
 
         name: 'headphone',
