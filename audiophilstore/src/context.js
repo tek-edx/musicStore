@@ -1,13 +1,22 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useReducer } from "react";
 import specialData from "./testdata/special";
 import reviews from "./testdata/review";
+import reducer from "./reducer";
 
 const AppContext = React.createContext();
 
+const initialState = {
+  catagory: specialData,
+  index: 0,
+  review: reviews[0],
+};
+
 const AppProvider = ({ children }) => {
-  const [catagory, setCatagory] = useState(specialData);
-  const [index, setIndex] = useState(0);
-  const [review, setReview] = useState(reviews[index]);
+  //   const [catagory, setCatagory] = useState(specialData);
+  //   const [index, setIndex] = useState(0);
+  //   const [review, setReview] = useState(reviews[index]);
+
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const checkIndex = (indexNumber) => {
     if (indexNumber > reviews.length - 1) {
@@ -21,57 +30,44 @@ const AppProvider = ({ children }) => {
   };
 
   const reviewRightButton = () => {
-    setIndex((index) => {
-      index = index + 1;
-      let newIndex = checkIndex(index);
-      return newIndex;
-    });
+    dispatch({ type: "REVIEW_RIGHT" });
   };
 
   const filterItem = (catagory) => {
-    console.log(catagory);
-    if (catagory === "All") {
-      setCatagory(specialData);
-      return;
-    }
-
-    let newCatagoryItems = specialData.filter(
-      (item) => item.catagory === catagory
-    );
-    console.log(newCatagoryItems);
-    setCatagory(newCatagoryItems);
+    dispatch({ type: "FILTER_ITEMS", payroll: catagory });
   };
 
   useEffect(() => {
-    setReview(reviews[index]);
-  }, [index]);
+    dispatch({ type: "SET_REVIEW" });
+
+    //    state.review = reviews[state.index];
+    // // // setReview(reviews[index]);
+  }, [state.index]);
+
+  // const autoReview = () => {
+  //   dispatch({ type: "AUTO_REVIEW" });
+  // };
 
   useEffect(() => {
     let slider = setInterval(() => {
-      let newIndex = checkIndex(index + 1);
-      setIndex(newIndex);
-      setReview(reviews[index]);
+      dispatch({ type: "AUTO_REVIEW" });
     }, 3000);
     return () => clearInterval(slider);
-  }, [index]);
+  }, [state.index]);
 
   const reviewLeftButton = () => {
-    setIndex((index) => {
-      index = index - 1;
-      let newIndex = checkIndex(index);
-      return newIndex;
-    });
+    dispatch({ type: "REVIEW_LEFT" });
   };
   return (
     <AppContext.Provider
       value={{
-        catagory,
-        index,
-        review,
+        ...state,
+
         checkIndex,
         reviewRightButton,
         reviewLeftButton,
         filterItem,
+        
       }}
     >
       {children}
