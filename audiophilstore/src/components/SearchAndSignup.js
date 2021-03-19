@@ -4,7 +4,7 @@ import React from 'react'
 import '../css/search&signup.css'
 import styled from 'styled-components';
 
-import Cart from './CartIcon';
+import CartIcon from './CartIcon';
 
 
 function SearchAndSignup() {
@@ -15,7 +15,7 @@ function SearchAndSignup() {
             <input type="text" placeholder="Product Search" className="search-bar" style={{height: '3rem', marginLeft: '1.2rem'}} />
             <p className='log-in'>Log In</p>
             <p>Sign Up</p>
-            <Cart />
+            <CartIcon />
              
 
         </div>

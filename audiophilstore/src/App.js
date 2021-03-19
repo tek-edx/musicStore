@@ -5,11 +5,24 @@ import { HomePage, AboutPage, CartPage, CheckoutPage, ProductPage, SingleProduct
 
 
 import { BsReverseLayoutTextWindowReverse } from "react-icons/bs";
+import { useEffect } from "react/cjs/react.development";
 
 
 
 
 function App() {
+
+  useEffect(()=> {
+
+    if(JSON.parse(localStorage.getItem('listItem')) === 'null') {
+      localStorage.setItem('listItem', [])
+    }
+
+  },[]);
+  
+
+  
+
  
   return (
     <Router>

@@ -1,0 +1,45 @@
+
+    
+    .cart-badge{
+
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        position: absolute;
+        top:0px;
+        right: 0px;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+
+        background-color: rgb(220,20,60,0.5);
+
+       
+        visibility: hidden;
+
+
+        
+    }
+
+    .cart-badge.show{
+
+       
+          visibility: visible;
+        
+    }
+
+    .cart-modal{
+        position: absolute;
+        top: 45px;
+        right: 20px;
+        height: 300px;
+        width: 300px;
+        border-radius: 5px;
+        z-index: 1;
+        background-color: slateblue;
+        color:white;
+
+        border: solid green 1px;
+        visibility: hidden;
+
+    }

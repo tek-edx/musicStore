@@ -1,15 +1,21 @@
 import React,{useEffect,useState} from 'react'
 import { FaCartArrowDown } from "react-icons/fa";
 import styled from 'styled-components';
+import { useGlobalContext } from '../context';
 import '../css/cart.css';
 
-function Cart() {
+function CartIcon() {
+
+    // const {cartItems} = useGlobalContext();
+
+   
 
   
 
     const [badgeClass, setBadgeClass] = useState('cart-badge');
     
-    let cartItems = JSON.parse(localStorage.getItem('cartList'));
+    
+     let cartItems = JSON.parse(localStorage.getItem('cartList'));
   
     
   
@@ -59,7 +65,7 @@ function Cart() {
         </CartIconStyle>
     )}
 
-    const CartIconStyle = styled.div`
+    export const CartIconStyle = styled.div`
 
     color: rgba(0,0,0,0.7);
     
@@ -110,4 +116,4 @@ function Cart() {
     `
       
 
-export default Cart
+export default CartIcon

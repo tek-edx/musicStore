@@ -1,13 +1,29 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useReducer } from "react";
 import specialData from "./testdata/special";
 import reviews from "./testdata/review";
+import reducer from "./reducer";
+import { GrAction } from "react-icons/gr";
+
+// Setting Initial State Values 
 
 const AppContext = React.createContext();
 
+const initialState = {
+  catagory: specialData,
+  index: 0,
+  review: reviews[0],
+  itemNumber: 1,
+  cartItems: JSON.parse(localStorage.getItem('cartList')),
+};
+
+// Setting App Provider component to wrap the App Component
+
 const AppProvider = ({ children }) => {
-  const [catagory, setCatagory] = useState(specialData);
-  const [index, setIndex] = useState(0);
-  const [review, setReview] = useState(reviews[index]);
+  
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  
+  // Function to chek the index number 
 
   const checkIndex = (indexNumber) => {
     if (indexNumber > reviews.length - 1) {
@@ -20,58 +36,75 @@ const AppProvider = ({ children }) => {
     return indexNumber;
   };
 
+  //Dispatch of  right Click on the Reveiw section.
+
   const reviewRightButton = () => {
-    setIndex((index) => {
-      index = index + 1;
-      let newIndex = checkIndex(index);
-      return newIndex;
-    });
+    dispatch({ type: "REVIEW_RIGHT" });
   };
 
   const filterItem = (catagory) => {
-    console.log(catagory);
-    if (catagory === "All") {
-      setCatagory(specialData);
-      return;
-    }
-
-    let newCatagoryItems = specialData.filter(
-      (item) => item.catagory === catagory
-    );
-    console.log(newCatagoryItems);
-    setCatagory(newCatagoryItems);
+    dispatch({ type: "FILTER_ITEMS", payroll: catagory });
   };
 
-  useEffect(() => {
-    setReview(reviews[index]);
-  }, [index]);
+  //Dispatch the click to remove item funtion to remove sepcific items from the cartItem Array 
+
+  const removeItem = (id) =>{
+    dispatch({type:'REMOVE_ITEM',payload: id})
+
+  } ;
 
   useEffect(() => {
-    let slider = setInterval(() => {
-      let newIndex = checkIndex(index + 1);
-      setIndex(newIndex);
-      setReview(reviews[index]);
-    }, 3000);
-    return () => clearInterval(slider);
-  }, [index]);
+    dispatch({ type: "SET_REVIEW" });
+
+    //    state.review = reviews[state.index];
+    // // // setReview(reviews[index]);
+  }, [state.index]);
+
+  // const autoReview = () => {
+  //   dispatch({ type: "AUTO_REVIEW" });
+  // };
+
+  // useEffect(() => {
+  //   let slider = setInterval(() => {
+  //     dispatch({ type: "AUTO_REVIEW" });
+  //   }, 3000);
+  //   return () => clearInterval(slider);
+  // }, [state.index]);
+
+  useEffect(() => {
+
+  },[state.itemNumber]);
 
   const reviewLeftButton = () => {
-    setIndex((index) => {
-      index = index - 1;
-      let newIndex = checkIndex(index);
-      return newIndex;
-    });
+    dispatch({ type: "REVIEW_LEFT" });
   };
+
+  const increaseItemNumber = (id) => {
+
+
+    dispatch({type: 'INCREASE_ITEM' ,payload: id})
+
+  };
+
+  const decreaseItemNumber = (id) => {
+
+    dispatch({ type: 'DECREASE_ITEM',payload : id})
+
+  };
+  
   return (
     <AppContext.Provider
       value={{
-        catagory,
-        index,
-        review,
+        ...state,
+
         checkIndex,
         reviewRightButton,
         reviewLeftButton,
         filterItem,
+        increaseItemNumber,
+        decreaseItemNumber,
+        removeItem,
+        
       }}
     >
       {children}
