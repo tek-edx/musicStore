@@ -1,25 +1,83 @@
-import React from 'react';
+import React,{useState} from 'react';
 import styled from 'styled-components';
+import "../css/cartIcon.css";
+import CartIcon from './CartIcon';
+import {useGlobalContext} from '../context'
+
+import { RiArrowUpSLine, RiArrowDownSLine  } from "react-icons/ri";
 
 function Cart() {
-    let cartItems = JSON.parse(localStorage.getItem('cartList')) ;
+
+   
+
+    const { increaseItemNumber, decreaseItemNumber,itemNumber} = useGlobalContext();
     
+
+    let cartItems = JSON.parse(localStorage.getItem('cartList')) ;
+    console.log(cartItems);
+
+//   const increaseItemNumber = (id) => {
+//       if(cartItems.id === id){
+//           setItemNumber(itemNumber + 1);
+//       }
+     
+//   };
+
+
+   
+      
     return (
         <CartStyle>
+            <div style={{
+               
+                display: 'flex',
+                justifyContent: 'flex-end',
+                height: '50px',
+                marginRight: '10px',
+        }} >
+            <CartIcon />
+            </div>
+
+
         <div>
-            <div>Cart Items</div>
+
+
+           
+    
+        
             {
-            cartItems.map((item) => {
-                const {image,name,price} = item;
+            cartItems.map((item,index) => {
+                const { id,image, name, price,amount} = item;
                 return (
-                <div className="cart-grid">
+                    <div className="cart-grid" key={index}>
                 <div className="cart-image">
                     <img src={image} alt=""/>
                 </div>
                 <div className="cartItem-description">
                 <h3>{name}</h3>
                 <h4>{price}</h4>
-                </div>
+                 <button>Remove Item</button>
+               </div>
+
+                        <div className="amount" >
+                            <div className="number increase">
+                                <RiArrowUpSLine
+                                
+                                onClick = {() => {
+                                increaseItemNumber(index)
+                                }}
+                                /></div>
+                   {amount}
+                   <div className="number decrease">
+                                    <RiArrowDownSLine
+                                 /></div>
+               </div>
+
+               <div className="total item-amount">
+                   100
+               </div>
+ 
+               
             </div>)
             })
             }
@@ -34,7 +92,7 @@ const CartStyle = styled.div`
 
 .cart-grid {
     display:grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(4,1fr);
     grid-template-rows: 120px;
     justify-items: center;
     align-items: center;
@@ -69,6 +127,12 @@ const CartStyle = styled.div`
 
 }
 
+.amount{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 
 

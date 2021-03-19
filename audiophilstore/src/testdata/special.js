@@ -8,7 +8,7 @@ const specialProducts = [{
     review: 3,
     price: 1000,
     salePrice: 800,
-    onSale: false,
+    onSale: true,
     specs: [{ description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque aliquam vestibulum morbi blandit. Ullamcorper malesuada proin libero nunc consequat.  ", feature: ['feature 1', 'feature 2'], inBox: ['amplifier','cable','antena'] }],
     variation: [{ img: "https://cdn.shopify.com/s/files/1/0276/5304/6345/products/c0c6a360c71c961ae33f54fe4f71405f_2048x2048_5875c2a7-e056-4f31-9f7e-0007cb3cd2e2_2048x2048.jpg?v=1614045257", color: "white" }, { img: 'https://cdn.shopify.com/s/files/1/0276/5304/6345/products/c0c6a360c71c961ae33f54fe4f71405f_2048x2048_5875c2a7-e056-4f31-9f7e-0007cb3cd2e2_2048x2048.jpg?v=1614045257', color: "black" }]
 },

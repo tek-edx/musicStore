@@ -3,7 +3,9 @@ import specialData from "./testdata/special";
 import reviews from "./testdata/review";
 
 function reducer(state, action) {
-  const { catagory, index, review } = state;
+  const { catagory, index, review,itemNumber,cartItems } = state;
+  
+ 
 
   const checkIndex = (indexNumber) => {
     if (indexNumber > reviews.length - 1) {
@@ -49,14 +51,31 @@ function reducer(state, action) {
         (item) => item.catagory === action.payroll
       );
     }
-
-    console.log(`Filter activated`);
-    // console.log(newCatagoryItems);
-
-    console.log(newCatagoryItems);
-    // setCatagory(newCatagoryItems);
-    return { ...state, catagory: newCatagoryItems };
+  return { ...state, catagory: newCatagoryItems };
   }
+
+    if (action.type === "INCREASE_ITEM") {
+        let newItemNumber = itemNumber;
+    
+        console.log(` Action Payload ${action.payload}`);
+        cartItems.map((cardItem) => {
+            if(cardItem.id === action.payload){
+                   newItemNumber = itemNumber + 1;
+                 console.log(`New Item Number ${action.payload} , ${cardItem.id} ,${newItemNumber}`)
+                return {...state, itemNumber: newItemNumber}
+            } else {
+
+                console.log(`New  Number ${action.payload} , ${cardItem.id} ,${itemNumber}`)
+
+                return {...state}
+            }
+           
+        })
+       
+        
+        return { ...state}
+       
+    };
 }
 
 export default reducer;

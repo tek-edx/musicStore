@@ -5,8 +5,9 @@ import { FaInfoCircle, FaShoppingCart } from "react-icons/fa";
 import Stars from "./Stars";
 import SaleBadge from "./SaleBadge";
 
-
-let cartItems = localStorage.setItem('cartList', JSON.stringify([]));
+if (localStorage.getItem("cartList") === null) {
+  localStorage.setItem("cartList", JSON.stringify([]));
+}
 
 let cartItem = [];
 
@@ -17,16 +18,13 @@ const Product = ({ items }) => {
   const [hover, setHover] = useState(false);
   const [cartHover, setCartHover] = useState(false);
   const [infoHover, setInfoHover] = useState(false);
-  
 
   const cartCircle = useRef(null);
   const infoCircle = useRef(null);
 
- 
-
   useEffect(() => {
     if (cartHover) {
-        cartCircle.current.childNodes[0].style.color = 'rgba(123, 239, 178, 1)';
+      cartCircle.current.childNodes[0].style.color = "rgba(123, 239, 178, 1)";
     } else {
       cartCircle.current.childNodes[0].style.color = "inherit";
     }
@@ -46,19 +44,82 @@ const Product = ({ items }) => {
     buttonShow = "product-page-div";
   }
 
+  useEffect(() => {
+    cartItem = JSON.parse(localStorage.getItem("cartList"));
 
-    const addOnCart = (imgArg,nameArg, priceArg) => {
+    console.log(cartItem);
+  }, []);
 
-        cartItem.push({image:imgArg,name:nameArg, price:priceArg });
-        localStorage.setItem('cartList', JSON.stringify(cartItem));
+  
+
+  const addOnCart = (
+    idArg,
+    imgArg,
+    nameArg,
+    priceArg,
+    reviewArg,
+    onSaleArg,
+    salePriceArg,
+  
+    
+  ) => {
+
+ const result= Array.from(new Set (cartItem.map((item) => { return item.id})));
+
+
+ if(result.includes(idArg)){
+
+  cartItem.map((item,index) => {
+
+    if(item.id === idArg){
+
+      let newAmount = cartItem[index].amount
+      cartItem[index].amount = newAmount + 1;
+      console.log(cartItem[index].amount);
+
     }
+})
+  
+  
+   
+
+  //   existingItem['amount'] = amount + 1;
+
+    localStorage.setItem("cartList", JSON.stringify(cartItem));
+ }else{
+
+      cartItem.push({
+        id: idArg,
+        image: imgArg,
+        name: nameArg,
+        price: priceArg,
+        review: reviewArg,
+        onSale: onSaleArg,
+        salePrice: salePriceArg,
+        amount: 1,
+      });
+      localStorage.setItem("cartList", JSON.stringify(cartItem));
+    };
+
+ }
+ 
+ 
+ 
+//  .map((id) => {
+   
+//    let item = cartItem.find((item) => item.id == id)
+//    return {
+//      item
+//    }
+//  })
+
+ 
+//  console.log(result);
     
 
-  const { image, name, review, price, onSale, salePrice } = items;
+  const { id, image, name, price, review, onSale, salePrice } = items;
 
-    
-
-return (
+  return (
     <ProductStyle>
       <div
         className="special-card"
@@ -79,9 +140,7 @@ return (
               onMouseOut={() => {
                 setInfoHover(false);
               }}
-              
             />
-           
           </div>
 
           <div ref={cartCircle}>
@@ -94,12 +153,9 @@ return (
                 setCartHover(false);
               }}
               onClick={() => {
-                  addOnCart(image,name,price)
-            }}
-            >
-                
-        
-        </FaShoppingCart>
+                addOnCart(id, image, name, price, review, onSale, salePrice);
+              }}
+            ></FaShoppingCart>
           </div>
         </div>
         {onSale && <SaleBadge />}
@@ -121,16 +177,11 @@ return (
           {" "}
           <button className="product-page-btn">Product Page</button>
         </div>
-
-           
       </div>
-
-      
     </ProductStyle>
   );
 };
 
-const ProductStyle = styled.div`
-`;
+const ProductStyle = styled.div``;
 
 export default Product;
