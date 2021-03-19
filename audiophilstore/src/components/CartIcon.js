@@ -6,7 +6,7 @@ import '../css/cart.css';
 
 function CartIcon() {
 
-    // const {cartItems} = useGlobalContext();
+     const {cartItems} = useGlobalContext();
 
    
 
@@ -15,7 +15,7 @@ function CartIcon() {
     const [badgeClass, setBadgeClass] = useState('cart-badge');
     
     
-     let cartItems = JSON.parse(localStorage.getItem('cartList'));
+    
   
     
   
