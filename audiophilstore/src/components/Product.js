@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { FaInfoCircle, FaShoppingCart } from "react-icons/fa";
 import Stars from "./Stars";
 import SaleBadge from "./SaleBadge";
+import { useGlobalContext } from "../context";
 
 if (localStorage.getItem("cartList") === null) {
   localStorage.setItem("cartList", JSON.stringify([]));
@@ -14,6 +15,8 @@ let cartItem = [];
 const Product = ({ items }) => {
   let screenClass = "";
   let buttonShow = "";
+
+  const {itemAmount} = useGlobalContext();
 
   const [hover, setHover] = useState(false);
   const [cartHover, setCartHover] = useState(false);

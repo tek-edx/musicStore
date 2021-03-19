@@ -2,7 +2,15 @@ import specialData from "./testdata/special";
 import reviews from "./testdata/review";
 
 function reducer(state, action) {
-  const { catagory, index, review, itemNumber, cartItems } = state;
+  const {
+    catagory,
+    index,
+    review,
+    itemNumber,
+    cartItems,
+    totalItem,
+    totalPrice,
+  } = state;
 
   const checkIndex = (indexNumber) => {
     if (indexNumber > reviews.length - 1) {
@@ -80,7 +88,7 @@ function reducer(state, action) {
 
     localStorage.setItem("cartList", JSON.stringify(cartItems));
 
-    return { ...state, cartItems: cartItems };
+    return { ...state, cartItems: cartItems};
   }
 
   if (action.type === "REMOVE_ITEM") {
@@ -93,6 +101,30 @@ function reducer(state, action) {
     localStorage.setItem("cartList", JSON.stringify(newCartItem));
 
     return { ...state, cartItems: newCartItem };
+  }
+
+  if (action.type === "TOTAL_AMOUNT") {
+    console.log("Total Amount activated");
+
+    let total = cartItems.reduce(
+      (total, item) => {
+        const { amount, price } = item;
+
+        console.log(total);
+
+        total.itemTotal += parseFloat(amount * price);
+        total.itemAmount += amount;
+
+        return total;
+      },
+      { itemAmount: 0, itemTotal: 0 }
+    );
+
+    
+    
+    
+
+    return { ...state, totalItem: total.itemAmount,totalPrice: total.itemTotal };
   }
 }
 

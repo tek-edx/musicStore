@@ -4,7 +4,7 @@ import reviews from "./testdata/review";
 import reducer from "./reducer";
 import { GrAction } from "react-icons/gr";
 
-// Setting Initial State Values 
+// Setting Initial State Values
 
 const AppContext = React.createContext();
 
@@ -13,17 +13,18 @@ const initialState = {
   index: 0,
   review: reviews[0],
   itemNumber: 1,
-  cartItems: JSON.parse(localStorage.getItem('cartList')),
+  cartItems: JSON.parse(localStorage.getItem("cartList")),
+  totalItem: 0,
+  totalPrice: 0,
+  
 };
 
 // Setting App Provider component to wrap the App Component
 
 const AppProvider = ({ children }) => {
-  
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  
-  // Function to chek the index number 
+  // Function to chek the index number
 
   const checkIndex = (indexNumber) => {
     if (indexNumber > reviews.length - 1) {
@@ -46,12 +47,12 @@ const AppProvider = ({ children }) => {
     dispatch({ type: "FILTER_ITEMS", payroll: catagory });
   };
 
-  //Dispatch the click to remove item funtion to remove sepcific items from the cartItem Array 
+  //Dispatch the click to remove item funtion to remove sepcific items from the cartItem Array
 
-  const removeItem = (id) =>{
-    dispatch({type:'REMOVE_ITEM',payload: id})
-
-  } ;
+  const removeItem = (id) => {
+    dispatch({ type: "REMOVE_ITEM", payload: id });
+    dispatch({ type: "TOTAL_AMOUNT" })
+  };
 
   useEffect(() => {
     dispatch({ type: "SET_REVIEW" });
@@ -71,27 +72,27 @@ const AppProvider = ({ children }) => {
   //   return () => clearInterval(slider);
   // }, [state.index]);
 
-  useEffect(() => {
-
-  },[state.itemNumber]);
+  
 
   const reviewLeftButton = () => {
     dispatch({ type: "REVIEW_LEFT" });
   };
 
   const increaseItemNumber = (id) => {
-
-
-    dispatch({type: 'INCREASE_ITEM' ,payload: id})
-
+    dispatch({ type: "INCREASE_ITEM", payload: id });
+    dispatch({ type: "TOTAL_AMOUNT" })
   };
 
   const decreaseItemNumber = (id) => {
-
-    dispatch({ type: 'DECREASE_ITEM',payload : id})
-
+    dispatch({ type: "DECREASE_ITEM", payload: id });
+    dispatch({ type: "TOTAL_AMOUNT" })
   };
-  
+
+  useEffect(() => {
+    dispatch({ type: "TOTAL_AMOUNT" })
+  },[state.totalItem,state.totalPrice])
+ 
+
   return (
     <AppContext.Provider
       value={{

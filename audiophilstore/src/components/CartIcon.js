@@ -6,10 +6,10 @@ import '../css/cart.css';
 
 function CartIcon() {
 
-     const {cartItems} = useGlobalContext();
+     const {cartItems,totalItem} = useGlobalContext();
 
    
-
+    console.log(totalItem);
   
 
     const [badgeClass, setBadgeClass] = useState('cart-badge');
@@ -19,28 +19,28 @@ function CartIcon() {
   
     
   
-   let cartItemsNumber = cartItems.length;
+//    let cartItemsNumber = cartItems.length;
    
-   console.log(cartItemsNumber);
+//    console.log(cartItemsNumber);
 
    useEffect(() =>{
 
-    if(cartItemsNumber < 1 ) {
-        console.log(cartItemsNumber)
+    if(totalItem < 1 ) {
+        // console.log(cartItemsNumber)
         setBadgeClass('cart-badge');
     }else{
         setBadgeClass('cart-badge show');
     }
     
-    },[cartItemsNumber])
+    },[totalItem])
 
     return (
         <CartIconStyle>
         <div>
             <FaCartArrowDown style={{height: '2rem', width: '2rem',}} className='cart-icon' />
             <div className= {badgeClass}>
-                {console.log(badgeClass)}
-                {cartItemsNumber}
+                
+                {totalItem}
             </div>
             <div className="cart-modal">
                 {
