@@ -8,21 +8,28 @@ import { GrAction } from "react-icons/gr";
 
 const AppContext = React.createContext();
 
-const initialState = {
-  catagory: specialData,
-  index: 0,
-  review: reviews[0],
-  itemNumber: 1,
-  cartItems: JSON.parse(localStorage.getItem("cartList")),
-  totalItem: 0,
-  totalPrice: 0,
-  
-};
+
+
+
 
 // Setting App Provider component to wrap the App Component
 
 const AppProvider = ({ children }) => {
+
+
+  const initialState = {
+    catagory: specialData,
+    index: 0,
+    review: reviews[0],
+    itemNumber: 1,
+    cartItems: JSON.parse(localStorage.getItem("cartList")),
+    searchTerm: '',
+    totalItem: 0,
+    totalPrice: 0,
+
+};
   const [state, dispatch] = useReducer(reducer, initialState);
+  
 
   // Function to chek the index number
 
@@ -93,6 +100,29 @@ const AppProvider = ({ children }) => {
   },[state.totalItem,state.totalPrice])
  
 
+
+  const addOnCart = (idArg,imgArg,nameArg,priceArg,reviewArg,onSaleArg,salePriceArg) => {
+    dispatch({type:"ADD_ITEM",payload:{idArg,imgArg,nameArg,priceArg,reviewArg,onSaleArg,salePriceArg}})
+    dispatch({ type: "TOTAL_AMOUNT" })
+  }
+  
+ 
+ 
+
+  const searchItem = (e) => {
+
+    dispatch({ type: 'SET_SEARCH_STR',payload: e})
+
+   
+
+}
+
+useEffect(() => {
+  dispatch({ type: 'SEARCH_ITEM_ARRAY' })
+  
+  }, [state.searchTerm])
+
+
   return (
     <AppContext.Provider
       value={{
@@ -105,6 +135,10 @@ const AppProvider = ({ children }) => {
         increaseItemNumber,
         decreaseItemNumber,
         removeItem,
+        addOnCart,
+        searchItem
+        
+    
         
       }}
     >

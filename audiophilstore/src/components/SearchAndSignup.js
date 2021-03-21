@@ -1,18 +1,36 @@
 
 
-import React from 'react'
+import React,{useRef,useState} from 'react'
 import '../css/search&signup.css'
 import styled from 'styled-components';
-
 import CartIcon from './CartIcon';
+import { useGlobalContext } from '../context';
+import data from '../testdata/special';
+
 
 
 function SearchAndSignup() {
+
+    const {cartItems,searchItem,searchTerm}   = useGlobalContext();
+
+    
+   
+    
+
+   
     return (
         <SearchSignup>
         <div className = 'wrapper'>
+
+           
             
-            <input type="text" placeholder="Product Search" className="search-bar" style={{height: '3rem', marginLeft: '1.2rem'}} />
+            <input type="text" 
+            value={searchTerm}
+           
+            placeholder="Product Search" className="search-bar" style={{height: '3rem', marginLeft: '1.2rem'}} 
+            onChange={(e) => {
+                searchItem(e)
+            }}/>
             <p className='log-in'>Log In</p>
             <p>Sign Up</p>
             <CartIcon />

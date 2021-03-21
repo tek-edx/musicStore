@@ -16,7 +16,7 @@ const Product = ({ items }) => {
   let screenClass = "";
   let buttonShow = "";
 
-  const {itemAmount} = useGlobalContext();
+  const { itemAmount,addOnCart } = useGlobalContext();
 
   const [hover, setHover] = useState(false);
   const [cartHover, setCartHover] = useState(false);
@@ -53,72 +53,63 @@ const Product = ({ items }) => {
     console.log(cartItem);
   }, []);
 
-  
+  useEffect(() => {
 
-  const addOnCart = (
-    idArg,
-    imgArg,
-    nameArg,
-    priceArg,
-    reviewArg,
-    onSaleArg,
-    salePriceArg,
-  
-    
-  ) => {
+  },[cartItem])
 
- const result= Array.from(new Set (cartItem.map((item) => { return item.id})));
+  // const addOnCart = (
+  //   idArg,
+  //   imgArg,
+  //   nameArg,
+  //   priceArg,
+  //   reviewArg,
+  //   onSaleArg,
+  //   salePriceArg
+  // ) => {
+    // const result = Array.from(
+    //   new Set(
+    //     cartItem.map((item) => {
+    //       return item.id;
+    //     })
+    //   )
+    // );
 
+    // if (result.includes(idArg)) {
+    //   cartItem.map((item, index) => {
+    //     if (item.id === idArg) {
+    //       let newAmount = cartItem[index].amount;
+    //       cartItem[index].amount = newAmount + 1;
+    //       console.log(cartItem[index].amount);
+    //     }
+    //   });
 
- if(result.includes(idArg)){
+    //   //   existingItem['amount'] = amount + 1;
 
-  cartItem.map((item,index) => {
+    //   localStorage.setItem("cartList", JSON.stringify(cartItem));
+    // } else {
+    //   cartItem.push({
+    //     id: idArg,
+    //     image: imgArg,
+    //     name: nameArg,
+    //     price: priceArg,
+    //     review: reviewArg,
+    //     onSale: onSaleArg,
+    //     salePrice: salePriceArg,
+    //     amount: 1,
+    //   });
+    //   localStorage.setItem("cartList", JSON.stringify(cartItem));
+    // }
+  // };
 
-    if(item.id === idArg){
+  //  .map((id) => {
 
-      let newAmount = cartItem[index].amount
-      cartItem[index].amount = newAmount + 1;
-      console.log(cartItem[index].amount);
+  //    let item = cartItem.find((item) => item.id == id)
+  //    return {
+  //      item
+  //    }
+  //  })
 
-    }
-})
-  
-  
-   
-
-  //   existingItem['amount'] = amount + 1;
-
-    localStorage.setItem("cartList", JSON.stringify(cartItem));
- }else{
-
-      cartItem.push({
-        id: idArg,
-        image: imgArg,
-        name: nameArg,
-        price: priceArg,
-        review: reviewArg,
-        onSale: onSaleArg,
-        salePrice: salePriceArg,
-        amount: 1,
-      });
-      localStorage.setItem("cartList", JSON.stringify(cartItem));
-    };
-
- }
- 
- 
- 
-//  .map((id) => {
-   
-//    let item = cartItem.find((item) => item.id == id)
-//    return {
-//      item
-//    }
-//  })
-
- 
-//  console.log(result);
-    
+  //  console.log(result);
 
   const { id, image, name, price, review, onSale, salePrice } = items;
 

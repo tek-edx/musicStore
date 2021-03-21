@@ -22,7 +22,7 @@ import styled from "styled-components";
 import "../css/special.css";
 
 function Home() {
-  const {catagory } = useGlobalContext();
+  const {catagory,data } = useGlobalContext();
 
   return (
     <div>

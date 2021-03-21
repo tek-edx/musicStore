@@ -4,13 +4,17 @@ import "../css/cartIcon.css";
 import CartIcon from './CartIcon';
 import {useGlobalContext} from '../context'
 
+
+import PaymentForm from './PaymentForm';
+
+
 import { RiArrowUpSLine, RiArrowDownSLine  } from "react-icons/ri";
 
 function Cart() {
 
    
 
-    const { increaseItemNumber, decreaseItemNumber,itemNumber,removeItem,cartItems} = useGlobalContext();
+    const { increaseItemNumber, decreaseItemNumber,itemNumber,removeItem,cartItems,totalPrice,itemPriceTotal} = useGlobalContext();
     
 
    
@@ -31,17 +35,17 @@ function Cart() {
             </div>
 
            
-        <div>
+        <div className='cart-body'> 
 
-
+         
            
     
-        
+          <div className="cart-items">
             {
             cartItems.map((item,index) => {
                 const { id,image, name, price,amount} = item;
                 return (
-                    <div className="cart-grid" key={index}>
+                    <div className="cart-grid" key={id}>
                 <div className="cart-image">
                     <img src={image} alt=""/>
                 </div>
@@ -70,40 +74,69 @@ function Cart() {
                </div>
 
                <div className="total item-amount">
-                   100
+                   {price * amount}
                </div>
             
-            <div className="payment-display">
-                This is payment displayloream epsom sdfdsfsdfds
-                dfdsfdsfds
-                dsfdsfdsf
-                sdfdsfds
-
-            </div>
+           
                
             </div>)
             })
             }
-        
+
+      </div>
+
+       <div className="cart-items-payment">
+           <h3>Payment</h3>
+
+           <PaymentForm />
+
+           <button className="payment-submit" type='submit'> Pay {totalPrice}</button>
+       </div>
+           
         </div>
+
+     
         </CartStyle>
     )
 }
 
+
 const CartStyle = styled.div`
 
+.cart-body{
+    display: flex;
+    
+    
+}
+
+.cart-items{
+    width: 70%;
+}
+
+.cart-items-payment{
+    display: flex;
+    flex-direction: column;
+   
+   background: linear-gradient(30deg, hsla(24, 5%, 37%, 1) 0%, hsla(320, 18%, 90%, 1) 00%, hsla(0, 0%, 98%, 1) 10%);
+    justify-content: flex-start;
+    border-radius: 20px;
+    
+    align-items: center;
+    width: 25%;
+    height: 500px;
+    
+   
+}
 
 
 
 .cart-grid {
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
     grid-template-rows: 120px;
     justify-items: center;
     align-items: center;
-    margin: 1rem;
-    background-color: whitesmoke;
-     
+    width: 100%;
     
 }
 
@@ -128,9 +161,19 @@ const CartStyle = styled.div`
 
 .cartItem-description{
 
-  
+    display: flex;
+    flex-direction: column;
+    
+    align-items: flex-start;
     justify-self: start;
+    
+    
 
+}
+
+.cartItem-description *{
+    margin:0;
+    padding: 0
 }
 
 .amount{
@@ -146,6 +189,17 @@ const CartStyle = styled.div`
     border: solid red 1px;
 }
 
+.payment-submit{
+    margin-top: 2rem;
+    height: 50px;
+    width: 100px;
+    border-radius: 20px;
+   background: linear-gradient(90deg, hsla(152, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
+    color: white;
+    border:none;
+    box-shadow: 1px 2px 5px black;
+
+}
 
 
 `

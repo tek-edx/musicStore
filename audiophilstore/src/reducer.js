@@ -10,6 +10,9 @@ function reducer(state, action) {
     cartItems,
     totalItem,
     totalPrice,
+    searchTerm,
+  
+    
   } = state;
 
   const checkIndex = (indexNumber) => {
@@ -109,23 +112,112 @@ function reducer(state, action) {
     let total = cartItems.reduce(
       (total, item) => {
         const { amount, price } = item;
+        
 
         console.log(total);
-
+        
+        
+        
         total.itemTotal += parseFloat(amount * price);
         total.itemAmount += amount;
 
         return total;
       },
-      { itemAmount: 0, itemTotal: 0 }
+      { itemAmount: 0, itemTotal: 0,itemPriceTotal: 0 }
     );
 
     
     
     
 
-    return { ...state, totalItem: total.itemAmount,totalPrice: total.itemTotal };
+    return { ...state, totalItem: total.itemAmount,totalPrice: total.itemTotal,itemPriceTotal: total.itemPriceTotal };
   }
+
+
+
+  if(action.type === 'ADD_ITEM'){
+
+    const {idArg,imgArg,nameArg,priceArg,reviewArg,onSaleArg,salePriceArg} = action.payload
+
+
+    const result = Array.from(
+      new Set(
+        cartItems.map((item) => {
+          return item.id;
+        })
+      )
+    );
+
+    if (result.includes(idArg)) {
+      cartItems.map((item, index) => {
+        if (item.id === idArg) {
+          let newAmount = cartItems[index].amount;
+          cartItems[index].amount = newAmount + 1;
+          console.log(cartItems[index].amount);
+        }
+      });
+
+      //   existingItem['amount'] = amount + 1;
+
+      localStorage.setItem("cartList", JSON.stringify(cartItems));
+    } else {
+      cartItems.push({
+        id: idArg,
+        image: imgArg,
+        name: nameArg,
+        price: priceArg,
+        review: reviewArg,
+        onSale: onSaleArg,
+        salePrice: salePriceArg,
+        amount: 1,
+      });
+      localStorage.setItem("cartList", JSON.stringify(cartItems));
+    }
+    return state
+    
+  }
+
+  
+
+
+  if (action.type === "SET_SEARCH_STR") {
+
+   console.log(searchTerm)
+    let searchString = action.payload.target.value;
+    console.log(searchString);
+
+    return {...state, searchTerm: searchString}
+  }
+
+    if(action.type === 'SEARCH_ITEM_ARRAY'){
+
+      let newItem = specialData.filter((item) => {
+       if(item.name.includes(searchTerm)) {
+    
+         return item
+
+        }
+        if (searchTerm === ''){
+          return specialData
+        }
+
+      })
+
+     console.log(newItem)
+      
+      return { ...state, catagory: newItem}
+
+    };
+
+    return {...state}
+    
 }
+
+
+
+
+ 
+
+
 
 export default reducer;
