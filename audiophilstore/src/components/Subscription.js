@@ -1,15 +1,87 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Form, Formik ,Field,ErrorMessage} from 'formik';
+import * as Yup from 'yup';
 
 function Subscription() {
+   
+    let initialValues = {
+        name: '',
+        email: ''
+    }
+
+   const onSubmit = (values) => {
+    
+    
+        console.log('submit value',values)
+    }
+    
+    
+    // let validate = (values) => {
+    //     let errors = {
+    //         name: '',
+    //         email: ''
+
+    //     }
+
+    //     if (!values.name) {
+    //         errors.name = 'Required'
+    //     }
+
+    //     if (!values.email) {
+    //         errors.email = 'Required'
+    //     }
+
+    //     return errors
+    // }
+
+    const validationSchema = Yup.object({
+     
+        name: Yup.string().required('Required!'),
+        email: Yup.string().required('Required')
+    });
+   
+
+      
+   
+        
+    
+    
     return (
         <SubscriptionStyle>
-            <form>
-             <input type="email" placeholder="email." />
+            <Formik
+            initalValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={onSubmit}>
+
+            <Form>
+
+                <section>
+
+            <label htmlFor="name">Name
+             <Field type="text" id='name' name='name' placeholder= "name"
+           
+            /> 
+                            <ErrorMessage name='name' />
+                </label>
+                
+                </section>
+       
+                <section>
+
+             <label htmlFor="email">Email
+             <Field type="email" id='email' name='email' placeholder='email' 
+           
+             />
+                            <ErrorMessage name='email' /></label>
+
+                  
+                </section>
+             
              <button type='submit'>Subscribe</button>
 
-            </form>
-            
+            </Form>
+            </Formik>
         </SubscriptionStyle>
     )
 }
@@ -25,9 +97,10 @@ background-color: whitesmoke;
 
 input{
     height: 3rem;
-    width: 50rem;
+    width: 100% 100%;
+    
     padding: 0;
-    margin-right: 1rem;
+    margin: 1rem auto;
     border: black solid 1px;
     border-radius: 10px;
    
@@ -36,6 +109,9 @@ input{
 
 button{
     height: 3rem;
+    min-width: 100%;
+    border-radius: 10px;
+    margin: auto;
     border: none;
     background-color: green;
     color: white;

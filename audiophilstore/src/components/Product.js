@@ -176,6 +176,7 @@ const Product = ({ items }) => {
   );
 };
 
-const ProductStyle = styled.div``;
+const ProductStyle = styled.div`
+`;
 
 export default Product;

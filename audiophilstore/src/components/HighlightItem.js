@@ -1,86 +1,100 @@
-import React ,{useState} from 'react';
+import React, { useState } from "react";
 import { BsFillCaretRightFill } from "react-icons/bs";
 import { BsFillCaretLeftFill } from "react-icons/bs";
-import styled from 'styled-components';
+import styled from "styled-components";
+import { useGlobalContext } from "../context";
 
+function HighlightItem() {
+  const { featuredItems } = useGlobalContext();
+  const [index, setIndex] = useState(0);
 
+  console.log(featuredItems);
 
-function HighlightItem({items}) {
-    const [index,setIndex] = useState(0);
-    const [highlightItem,setHighlightItem] = useState(items[index])
+  // const [highlightItem,setHighlightItem] = useState(items[index])
 
-    // const randomIndex = () => {
-    //    let slider =  setInterval(() => {
+  // const randomIndex = () => {
+  //    let slider =  setInterval(() => {
 
-    //         let newIndex = Math.floor(
-    //             Math.random() * items.length )
-    //             console.log(newIndex);
+  //         let newIndex = Math.floor(
+  //             Math.random() * items.length )
+  //             console.log(newIndex);
 
-    //             if(newIndex === index && newIndex < items.lenght - 1){
-    //                 newIndex++;
+  //             if(newIndex === index && newIndex < items.lenght - 1){
+  //                 newIndex++;
 
-    //             }else{
-    //                 setIndex(0);
-    //             }
-    //            setIndex((index) => {
-    //                return newIndex;
-    //            });
+  //             }else{
+  //                 setIndex(0);
+  //             }
+  //            setIndex((index) => {
+  //                return newIndex;
+  //            });
 
+  //          clearInterval(slider);
 
-    //          clearInterval(slider);
+  //     }, 10000);
 
-    //     }, 10000);
+  // }
 
-        
-    // }
+  // randomIndex();
+  return (
+    <HighlightItems>
+      <div className="highlight-main-container">
+      <button>
+        <BsFillCaretLeftFill className="arrow-left" />
+      </button>
 
-    const {image} = items[index]
+     <div className="section-center">
 
+      {featuredItems.map((item,index) => {
+        const { id, image } = item;
+         
+        return (
+          
+            <div key={index} className="highlight-items">
+              <img src={image} className="highlight-image" />
+           
+            </div>
+        );
+         
+      })}
+      
+          </div>
+      <button>
+        {" "}
+        <BsFillCaretRightFill className="arrow-right" />
+      </button>
 
-   
+      </div>
+    </HighlightItems>
 
-    // randomIndex();
-    return (
-        <HighlightItems>
-        <div>
-        <div className="highlight-items">
-            <div><BsFillCaretLeftFill  className='arrow-left'/></div>
-            <img src={image} className="highlight-image"/>
-            <div><BsFillCaretRightFill className='arrow-right'/></div>
-        </div>
-        </div>
-        </HighlightItems>
-    )
+  );
 }
 
 const HighlightItems = styled.div`
- 
-.highlight-items{
-     display: flex;
-     place-items: center;
-     place-content: center;
- }
 
-.highlight-image{
-    width: 98%;
-    height: 500px;
-    object-fit: contain;
-    object-position: 50%;
-}
-
-.arrow-right,.arrow-left {
-    color: rgba(0,0,0,0.5);
-}
-.arrow-right {
-    height: 50px;
-    width: 50px;
+highlight-main-container{
+  position: relative;
+  height: 60vh;
 
 }
-.arrow-left {
-    height: 50px;
-    width: 50px;
 
+button{
+  display: inline-block;
 }
-`
+
+.section-center{
+
+  display: flex;
+  position: absolute;
+  width: 100vw;
+  overflow: hidden;
+  top: 0px;
+  
+}
+
+
+  
+   
+`;
 
 export default HighlightItem;

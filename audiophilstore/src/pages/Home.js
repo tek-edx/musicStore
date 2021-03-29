@@ -24,11 +24,13 @@ import "../css/special.css";
 function Home() {
   const {catagory,data } = useGlobalContext();
 
+  
+
   return (
     <div>
       <HeaderBadge />
 
-      <HighlightItem items={specialData} />
+      {/* <HighlightItem /> */}
       <SearchAndSignup />
 
       <Navigation />

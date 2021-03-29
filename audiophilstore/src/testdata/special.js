@@ -9,6 +9,7 @@ const specialProducts = [{
     price: 1000,
     salePrice: 800,
     onSale: true,
+    featuredItem: false,
     specs: [{ description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque aliquam vestibulum morbi blandit. Ullamcorper malesuada proin libero nunc consequat.  ", feature: ['feature 1', 'feature 2'], inBox: ['amplifier','cable','antena'] }],
     variation: [{ img: "https://cdn.shopify.com/s/files/1/0276/5304/6345/products/c0c6a360c71c961ae33f54fe4f71405f_2048x2048_5875c2a7-e056-4f31-9f7e-0007cb3cd2e2_2048x2048.jpg?v=1614045257", color: "white" }, { img: 'https://cdn.shopify.com/s/files/1/0276/5304/6345/products/c0c6a360c71c961ae33f54fe4f71405f_2048x2048_5875c2a7-e056-4f31-9f7e-0007cb3cd2e2_2048x2048.jpg?v=1614045257', color: "black" }]
 },
@@ -22,6 +23,7 @@ const specialProducts = [{
         price: 400,
         salePrice: 200,
         onSale: false,
+        featuredItem: false,
         specs: [{
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque aliquam vestibulum morbi blandit. Ullamcorper malesuada proin libero nunc consequat.  ", feature: ['Main conductor: Silver-plated α (Alpha) OFC Conductors', 'Connectors: Furutech-engineered 24k gold-plated USB series Connectors'], inBox: ['amplifier', 'cable', 'antena'] }],
         variation: [{ img: "https://cdn.shopify.com/s/files/1/0276/5304/6345/products/20210112_190833_2048x2048.jpg?v=1611041233", color: "blue" }, { img: 'https://cdn.shopify.com/s/files/1/0276/5304/6345/products/20201118_203234_2048x2048.jpg?v=1606203046', color: "stripe" }]
@@ -37,6 +39,7 @@ const specialProducts = [{
         price: 600,
         salePrice: 450,
         onSale: false,
+        featuredItem: false,
         specs: [{
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque aliquam vestibulum morbi blandit. Ullamcorper malesuada proin libero nunc consequat.  ", 
             feature: ['Main conductor: Silver-plated α (Alpha) OFC Conductors', 'Connectors: Furutech-engineered 24k gold-plated USB series Connectors'], inBox: ['amplifier', 'cable', 'antena']
@@ -54,6 +57,7 @@ const specialProducts = [{
         price: 300,
         salePrice: 200,
         onSale: true,
+        featuredItem: true,
         specs: [{
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque aliquam vestibulum morbi blandit. Ullamcorper malesuada proin libero nunc consequat.  ",
             feature: ['Main conductor: Silver-plated α (Alpha) OFC Conductors', 'Connectors: Furutech-engineered 24k gold-plated USB series Connectors'],
@@ -72,6 +76,7 @@ const specialProducts = [{
         price: 1000,
         salePrice: 850,
         onSale: false,
+        featuredItem: true,
         specs: [{
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque aliquam vestibulum morbi blandit. Ullamcorper malesuada proin libero nunc consequat.  ",
             feature: ['Main conductor: Silver-plated α (Alpha) OFC Conductors', 'Connectors: Furutech-engineered 24k gold-plated USB series Connectors'],
@@ -90,6 +95,7 @@ const specialProducts = [{
         price: 200,
         salePrice: 150,
         onSale: true,
+        featuredItem: false,
         specs: [{
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque aliquam vestibulum morbi blandit. Ullamcorper malesuada proin libero nunc consequat.  ",
             feature: ['Main conductor: Silver-plated α (Alpha) OFC Conductors', 'Connectors: Furutech-engineered 24k gold-plated USB series Connectors'],
@@ -107,6 +113,7 @@ const specialProducts = [{
         price: 200,
         salePrice: 180,
         onSale: false,
+        featuredItem: false,
         specs: [{
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque aliquam vestibulum morbi blandit. Ullamcorper malesuada proin libero nunc consequat.  ",
             feature: ['Main conductor: Silver-plated α (Alpha) OFC Conductors', 'Connectors: Furutech-engineered 24k gold-plated USB series Connectors'],
@@ -125,6 +132,7 @@ const specialProducts = [{
         salePrice: 120,
         
         onSale: true,
+        featuredItem: true,
         specs: [{
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque aliquam vestibulum morbi blandit. Ullamcorper malesuada proin libero nunc consequat.  ",
             feature: ['Main conductor: Silver-plated α (Alpha) OFC Conductors', 'Connectors: Furutech-engineered 24k gold-plated USB series Connectors'],

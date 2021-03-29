@@ -51,9 +51,8 @@ display: flex;
 flex-direction: row;
 width: 98%;
 
-background-color: whitesmoke;
-
-
+background-color: rgba(0,0,0,0.9);
+color: white;
 margin: 0px auto;
 margin-bottom : 2rem;
 position: sticky;
@@ -62,11 +61,11 @@ top: 7.9rem;
 
 
 a{
-  display:block;
-font-size: 1.5rem;
+display:block;
+font-size: 1.2rem;
 margin: 0.5rem;
 cursor: pointer;
-color: slateblue;
+color: white;
 text-transform: capitalize;
 }
 

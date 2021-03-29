@@ -11,6 +11,8 @@ function reducer(state, action) {
     totalItem,
     totalPrice,
     searchTerm,
+    featuredItems,
+    hamburger,
   
     
   } = state;
@@ -157,6 +159,9 @@ function reducer(state, action) {
         }
       });
 
+
+      
+
       //   existingItem['amount'] = amount + 1;
 
       localStorage.setItem("cartList", JSON.stringify(cartItems));
@@ -209,7 +214,94 @@ function reducer(state, action) {
 
     };
 
-    return {...state}
+  if (action.type === 'FEATURED_ITEMS') {
+    console.log(` I am inside featured item`)
+    
+
+
+    let featuredItem = specialData.filter((item) => {
+
+      console.log(item.featuredItem)
+      if(item.featuredItem === true){
+        return item
+      }
+
+    })
+
+    console.log(featuredItem);
+
+    return { ...state, featuredItems: featuredItem}
+
+  };
+
+
+  if(action.type === 'SORT_ITEMS'){
+
+
+    let sortedItems = [];
+    console.log(action.payload);
+
+    if(action.payload === 'high-first'){
+
+     sortedItems = specialData.sort((a,b) => {
+
+      return (b.price - a.price)
+
+     });
+    
+     return {...state, catagory: sortedItems}
+
+    }
+    if (action.payload === 'low-first') {
+
+      sortedItems = specialData.sort((a, b) => {
+
+          
+
+          return (a.price - b.price)
+
+        });
+        
+
+        return { ...state, cartagory: sortedItems }
+    }
+
+    
+    if (action.payload ==='rating') {
+      
+      console.log('Rating','I am inside')
+      sortedItems = specialData.sort((a,b) => {
+
+
+         return (b.review - a.review)
+      })
+      console.log(sortedItems)
+
+      return {...state, catagory: sortedItems}
+
+    }
+    if (action.payload === 'new-Item') {
+
+      
+    
+    }
+    if (action.payload === 'special') {
+
+      let sortedItems = specialData.filter((item) => item.onSale)
+
+    
+    return  {...state, catagory: sortedItems }
+  }
+}
+
+if(action.type==='TOGGLE_HAMBURGER'){
+
+  let newHamburger = !hamburger;
+
+  return {...state, hamburger: newHamburger}
+}
+
+    return state
     
 }
 

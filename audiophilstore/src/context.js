@@ -26,7 +26,10 @@ const AppProvider = ({ children }) => {
     searchTerm: '',
     totalItem: 0,
     totalPrice: 0,
-
+    featuredItems: [],
+    hamburger: false,
+    
+    
 };
   const [state, dispatch] = useReducer(reducer, initialState);
   
@@ -117,10 +120,27 @@ const AppProvider = ({ children }) => {
 
 }
 
+const hamburgerBoolean = () => {
+  dispatch({type: 'TOGGLE_HAMBURGER'})
+}
+
 useEffect(() => {
   dispatch({ type: 'SEARCH_ITEM_ARRAY' })
   
   }, [state.searchTerm])
+
+
+  useEffect(() => {
+
+    dispatch({type: 'FEATURED_ITEMS'})
+
+  },[])
+
+  const sortItems= (sortArg) => {
+  
+    dispatch({type:"SORT_ITEMS" , payload: sortArg})
+
+  }
 
 
   return (
@@ -136,7 +156,10 @@ useEffect(() => {
         decreaseItemNumber,
         removeItem,
         addOnCart,
-        searchItem
+        searchItem,
+        sortItems,
+        hamburgerBoolean,
+    
         
     
         

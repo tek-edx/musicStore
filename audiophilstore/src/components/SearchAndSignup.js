@@ -43,7 +43,8 @@ function SearchAndSignup() {
 
 const SearchSignup = styled.div`
 
-width: 98%;
+
+width: 100%;
 position: sticky;
 top: 4rem;
 margin: auto;
@@ -51,11 +52,11 @@ z-index: 2;
 
 .wrapper{
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     background-color: whitesmoke;
     
+
 }
 
 .wrapper * {
@@ -64,12 +65,12 @@ z-index: 2;
 
 .search-bar {
     width: 60%;
-    
+
 }
 
 .log-in {
     margin-left: auto;
-    
+
 }
 
 input{
@@ -77,6 +78,60 @@ input{
     font-size: 1.5rem;
     margin: 0.5rem auto;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+// @media only screen and (min-width: '800px') {
+
+
+// width: 98%;
+// position: sticky;
+// top: 4rem;
+// margin: auto;
+// z-index: 2;
+
+// .wrapper{
+//     display: flex;
+    
+//     justify-content: space-between;
+//     align-items: center;
+//     background-color: whitesmoke;
+
+// }
+
+// .wrapper * {
+//     margin-right: 0.5rem;
+// }
+
+// .search-bar {
+//     width: 60%;
+
+// }
+
+// .log-in {
+//     margin-left: auto;
+
+// }
+
+// input{
+//     background-color: whitesmoke;
+//     font-size: 1.5rem;
+//     margin: 0.5rem auto;
+// }
+
+  
+
+// }
+
 
 
 
